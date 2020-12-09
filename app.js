@@ -34,15 +34,19 @@ class Book{
 				`
 		})
 	}
+
 	static removingBook(){
-		const list = document.querySelectorAll("li")
-		const ul = document.querySelector("ul")
+		const list = document.querySelectorAll("li"),
+			ul = document.querySelector("ul")
+
 		list.forEach((item, i) => {
 			var tapedTwice = false;
 			item.addEventListener("touchstart", function(e){
 				if(!tapedTwice) {
 					tapedTwice = true;
-				    setTimeout( function() { tapedTwice = false; }, 300 );
+				    setTimeout(() => {
+						tapedTwice = false;
+					}, 300);
 					return false;
 				}
 			 	event.preventDefault();
@@ -70,36 +74,36 @@ class Book{
 	}
 }
 
-__main()
+main()
 
-
-function __main(){
+function main(){
 	setDateTime()
 	addBookOption(false)
 	addingBook()
 }
 
 function addingBook(){
-	const addBtn = document.querySelector("#submit")
-	const inputs = document.querySelector(".inputs")
+	const addBtn = document.querySelector("#submit"),
+		inputs = document.querySelector(".inputs")
+
 	addBtn.addEventListener('click', function(){
 		const bookName = document.querySelector("#book").value,
 			  bookAuthor = document.querySelector("#author").value,
 			  readingTime = document.querySelector("#time").value
 		if(bookName === "" || bookAuthor === "" || readingTime === ""){
-			document.querySelector(".error").innerHTML = "Please fill all the fields"
-			document.querySelector(".error").style.color = "red"
+			error(true)
 		} else{
-			document.querySelector(".error").innerHTML = "Book added!"
-			document.querySelector(".error").style.color = "green"
 			new Book(bookName, bookAuthor, readingTime)
+			clearFeilds()
+			error(false)
 		}
 	})
 }
 
 function setDateTime(){
-	const timeHolder = document.querySelector(".time")
-	const dateHolder = document.querySelector(".date")
+	const timeHolder = document.querySelector(".time"),
+		dateHolder = document.querySelector(".date")
+
 	update(timeHolder, dateHolder)
 
 	setInterval(() => {
@@ -116,8 +120,8 @@ function setDateTime(){
 }
 
 function addBookOption(flag){
-	const addBookBtn = document.querySelector(".add-book-btn")
-	const inputs = document.querySelector(".inputs")
+	const addBookBtn = document.querySelector(".add-book-btn"),
+		inputs = document.querySelector(".inputs")
 	var addBookOpen = flag
 	addBookBtn.addEventListener("click", function(){
 		if(!addBookOpen){
@@ -129,8 +133,22 @@ function addBookOption(flag){
 		}
 		document.querySelector(".error").innerHTML = null
 		document.querySelector(".error").style.color = "green"
-		document.querySelector("#book").value = ""
-		document.querySelector("#author").value = ""
-		document.querySelector("#time").value = ""
+		clearFeilds()
 	})
+}
+
+function clearFeilds(){
+	document.querySelector("#book").value = ""
+	document.querySelector("#author").value = ""
+	document.querySelector("#time").value = ""
+}
+
+function error(flag){
+	if(flag){
+		document.querySelector(".error").innerHTML = "Please fill all the fields"
+		document.querySelector(".error").style.color = "red"
+	} else {
+		document.querySelector(".error").innerHTML = "Book added!"
+		document.querySelector(".error").style.color = "green"
+	}
 }
