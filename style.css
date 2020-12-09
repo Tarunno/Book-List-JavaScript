@@ -11,6 +11,14 @@
 	--primary-text: #161616;
 	--secondary-text: #AFAFAF;
 	--primary-button: linear-gradient(260deg, rgba(76, 112, 173, 1), rgba(43, 180, 208, 1));
+	--primary-scrollbar: linear-gradient(0deg, rgba(76, 112, 173, 1), rgba(43, 180, 208, 1));
+}
+::-webkit-scrollbar{
+	width: 8px;
+}
+::-webkit-scrollbar-thumb{
+	background: var(--primary-scrollbar);
+	border-radius: 10px;
 }
 body{
 	width: 100%;
@@ -54,15 +62,17 @@ main{
 	position: relative;
 	left: 5%;
 	width: 90%;
-	top: 100px;
+	top: 20px;
 	background-color: #e9f56c;
 	padding: 10px;
 	border-radius: 10px;
+	margin-bottom: 20px;
 }
 .inputs{
 	display: none;
 	flex-direction: column;
 	padding: 20px;
+	width: 100%;
 }
 .inputs input{
 	padding: 10px;
@@ -70,8 +80,10 @@ main{
 	border-radius: 30px;
 	border: none;
 	text-align: center;
+	width: 100%;
+	max-width: 500px;
 }
-.inputs input:focus{
+.inputs input:focus, .inputs button:focus{
 	outline: none;
 }
 .inputs button{
@@ -80,6 +92,9 @@ main{
 	border-radius: 30px;
 	border: none;
 	text-align: center;
+	width: 100%;
+	max-width: 500px;
+	cursor: pointer;
 }
 .add-book{
 	width: 100%;
@@ -98,9 +113,12 @@ main{
 	color: #FFFFFF;
 	font-size: 20px;
 	text-align: center;
+	cursor: pointer;
 }
 .show{
 	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 .book-list{
 	width: 100%;
@@ -112,18 +130,21 @@ ul{
 li{
 	display: flex;
 	width: 100%;
-	justify-content: space-between;
+	max-width: 700px;
+	justify-content: space-around;
+	align-items: center;
 	box-shadow: 2px 2px 5px var(--secondary-text);
-	margin: 10px 0px;
+	margin: 10px auto;
 	padding: 20px;
 	border-radius: 5px;
 }
 li h1{
-	flex: 2;
+	text-align: center;
+	flex: 3;
 	color: var(--secondary-text);
 }
 li .book-info{
-	flex: 3;
+	flex: 9;
 }
 li .book-info h2{
 	font-size: 20px;
