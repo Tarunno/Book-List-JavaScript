@@ -58,6 +58,7 @@ class Book{
 					}
 				});
 				Book.books = carry
+				document.cookie = "books="+JSON.stringify(carry)+";max-age=" + 30*24*60*60;
 			})
 			item.addEventListener("dblclick", function(){
 				ul.removeChild(item)
@@ -68,6 +69,7 @@ class Book{
 					}
 				});
 				Book.books = carry
+				document.cookie = "books="+JSON.stringify(carry)+";max-age=" + 30*24*60*60;
 			})
 		});
 
@@ -77,9 +79,33 @@ class Book{
 main()
 
 function main(){
+	setTimeout(() => {
+		getCookieBook()
+	}, 3000)
 	setDateTime()
 	addBookOption(false)
 	addingBook()
+}
+function getCookieBook(){
+	var cookieBook = []
+	var cookies = document.cookie.split(";");
+	cookies.forEach((item, i) => {
+		if(item.split("=")[0] == "books"){
+			cookieBook = item.split("=")[1];
+		}
+	});
+	setTimeout(() =>{
+		cookieBook = JSON.parse(cookieBook);
+		var maxId = 1
+		console.log(cookieBook);
+		cookieBook.forEach((item, i) => {
+			maxId = Math.max(maxId, item.id)
+		});
+		Book.lastId = maxId
+		cookieBook.forEach((item, i) => {
+			new Book(item.name, item.author, item.time)
+		});
+	}, 100)
 }
 
 function addingBook(){
@@ -96,6 +122,8 @@ function addingBook(){
 			new Book(bookName, bookAuthor, readingTime)
 			clearFeilds()
 			error(false)
+			var books = Book.books
+			document.cookie = "books="+JSON.stringify(books)+";max-age=" + 30*24*60*60;
 		}
 	})
 }
