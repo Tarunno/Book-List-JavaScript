@@ -140,7 +140,7 @@ function setDateTime(){
 
 	function update(timeHolder, dateHolder){
 		var date = new Date()
-		timeHolder.innerHTML = date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds()
+		timeHolder.innerHTML = (date.getHours() % 12) + ":" + date.getMinutes() + ":" + date.getSeconds()
 		var dateFormat = date.toDateString().split(" ")
 		var formated = dateFormat[0] + ", " + dateFormat[2] + " " + dateFormat[1]
 		dateHolder.innerHTML = formated
