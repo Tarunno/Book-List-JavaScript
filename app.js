@@ -79,9 +79,7 @@ class Book{
 main()
 
 function main(){
-	setTimeout(() => {
-		getCookieBook()
-	}, 3000)
+	getCookieBook()
 	setDateTime()
 	addBookOption(false)
 	addingBook()
