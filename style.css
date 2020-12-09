@@ -1,0 +1,133 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
+*{
+	margin: 0px;
+	padding: 0px;
+	box-sizing: border-box;
+}
+:root{
+	--primary-background: #FFFFFF;
+	--secondary: #CECCCD;
+	--primary-text: #161616;
+	--secondary-text: #AFAFAF;
+	--primary-button: linear-gradient(260deg, rgba(76, 112, 173, 1), rgba(43, 180, 208, 1));
+}
+body{
+	width: 100%;
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+	background: var(--primary-background);
+	font-family: 'Montserrat', sans-serif;
+}
+main{
+	width: 100%;
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+}
+.showcase{
+	height: 55vh;
+	width: 100%;
+	background: linear-gradient(rgba(0, 0, 0, .5), rgba(0, 0, 0, .5)), url("https://images.pexels.com/photos/2846814/pexels-photo-2846814.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940") no-repeat center center/cover;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	color: #FFFFFF;
+}
+.showcase h1{
+	font-weight: lighter;
+	font-size: 45px;
+}
+.showcase h4{
+	font-weight: lighter;
+	font-size: 15px;
+}
+.error{
+	font-size: 15px;
+	text-align: center;
+	font-weight: bold;
+	margin-bottom: 7px;
+}
+.note{
+	position: relative;
+	left: 5%;
+	width: 90%;
+	top: 100px;
+	background-color: #e9f56c;
+	padding: 10px;
+	border-radius: 10px;
+}
+.inputs{
+	display: none;
+	flex-direction: column;
+	padding: 20px;
+}
+.inputs input{
+	padding: 10px;
+	background-color: var(--secondary-text);
+	border-radius: 30px;
+	border: none;
+	text-align: center;
+}
+.inputs input:focus{
+	outline: none;
+}
+.inputs button{
+	padding: 10px;
+	background: var(--primary-button);
+	border-radius: 30px;
+	border: none;
+	text-align: center;
+}
+.add-book{
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	transform: translateY(-25px);
+	margin-bottom: -20px;
+}
+.add-book-btn{
+	width: 170px;
+	background: var(--primary-button);
+	align-items: center;
+	border: none;
+	border-radius: 30px;
+	padding: 15px;
+	color: #FFFFFF;
+	font-size: 20px;
+	text-align: center;
+}
+.show{
+	display: flex;
+}
+.book-list{
+	width: 100%;
+}
+ul{
+	width: 100%;
+	padding: 20px;
+}
+li{
+	display: flex;
+	width: 100%;
+	justify-content: space-between;
+	box-shadow: 2px 2px 5px var(--secondary-text);
+	margin: 10px 0px;
+	padding: 20px;
+	border-radius: 5px;
+}
+li h1{
+	flex: 2;
+	color: var(--secondary-text);
+}
+li .book-info{
+	flex: 3;
+}
+li .book-info h2{
+	font-size: 20px;
+}
+li .book-info h5{
+	color: var(--secondary-text);
+}
